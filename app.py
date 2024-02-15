@@ -1,7 +1,6 @@
 from flask import Flask, request, redirect, render_template, redirect, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
-from models import db, connect_db, Department, Employee
-
+from models import db, connect_db, Department, Employee, get_directory, get_directory_join, get_directory_join_class, Project, EmployeeProject
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///employees_db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -20,6 +19,7 @@ debug = DebugToolbarExtension(app)
 with app.app_context():
     connect_db(app)
     db.create_all()
+app.app_context().push()
 
 
 @app.route("/phones")
