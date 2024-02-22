@@ -16,10 +16,10 @@ debug = DebugToolbarExtension(app)
 
 # toolbar = DebugToolbarExtension(app)
 
+app.app_context().push()
 with app.app_context():
     connect_db(app)
     db.create_all()
-app.app_context().push()
 
 
 @app.route("/phones")

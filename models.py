@@ -39,7 +39,7 @@ class Employee(db.Model):
     # SQLA will populate it with data from the departments table automatically!
 
     # backref='employee' here is singular because it's just pulling one object
-    dept = db.relationship('Department', backref='employee')
+    dept = db.relationship('Department', backref='employees')
 
     assignments = db.relationship('EmployeeProject', backref='employee')
 
